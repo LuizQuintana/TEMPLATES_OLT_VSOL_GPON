@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2022-10-28T12:29:27Z</date>
+    <groups>
+        <group>
+            <name>OLT</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template Olt vsol 1600g Netcol luiz 16 PONS</template>
+            <name>Template Olt vsol 1600g Netcol luiz 16 PONS</name>
+            <templates>
+                <template>
+                    <name>Template Net Mikrotik SNMPv2</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>OLT</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>ColetaDeInformaçõesdaONT</name>
+                </application>
+                <application>
+                    <name>ColetaDeInformaçõesdaPON</name>
+                </application>
+                <application>
+                    <name>InterfacesUplink</name>
+                </application>
+                <application>
+                    <name>TotalOntsOfflinePorOlt</name>
+                </application>
+                <application>
+                    <name>TotalOntsOnlinePorOlt</name>
+                </application>
+                <application>
+                    <name>TotalOntsProvisionadasPorOlt</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>TotalOntsOnline</name>
+                    <type>CALCULATED</type>
+                    <key>TotalOntsOnline</key>
+                    <delay>5m</delay>
+                    <params>last(&quot;TotalOntsOnline.[1]&quot;) + last(&quot;TotalOntsOnline.[2]&quot;) + &#13;
+last(&quot;TotalOntsOnline.[3]&quot;) + last(&quot;TotalOntsOnline.[4]&quot;) + &#13;
+last(&quot;TotalOntsOnline.[5]&quot;) + last(&quot;TotalOntsOnline.[6]&quot;) + &#13;
+last(&quot;TotalOntsOnline.[7]&quot;) + last(&quot;TotalOntsOnline.[8]&quot;) + last(&quot;TotalOntsOnline.[9]&quot;) + last(&quot;TotalOntsOnline.[10]&quot;) +&#13;
+last(&quot;TotalOntsOnline.[11]&quot;) + last(&quot;TotalOntsOnline.[12]&quot;) +&#13;
+last(&quot;TotalOntsOnline.[13]&quot;) + last(&quot;TotalOntsOnline.[14]&quot;) +&#13;
+last(&quot;TotalOntsOnline.[15]&quot;) + last(&quot;TotalOntsOnline.[16]&quot;)</params>
+                    <applications>
+                        <application>
+                            <name>TotalOntsOnlinePorOlt</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>TotalOntsProvisionadaPorOlt</name>
+                    <type>CALCULATED</type>
+                    <key>TotalOntsProvisionadaPorOlt</key>
+                    <delay>10m</delay>
+                    <params>last(&quot;TotalOntsProvisionadas.[1]&quot;) + last(&quot;TotalOntsProvisionadas.[2]&quot;) + &#13;
+last(&quot;TotalOntsProvisionadas.[3]&quot;) + &#13;
+last(&quot;TotalOntsProvisionadas.[4]&quot;) + &#13;
+last(&quot;TotalOntsProvisionadas.[5]&quot;) + &#13;
+last(&quot;TotalOntsProvisionadas.[6]&quot;) + &#13;
+last(&quot;TotalOntsProvisionadas.[7]&quot;) +&#13;
+last(&quot;TotalOntsProvisionadas.[8]&quot;) + last(&quot;TotalOntsProvisionadas.[9]&quot;) + &#13;
+last(&quot;TotalOntsProvisionadas.[10]&quot;) + &#13;
+last(&quot;TotalOntsProvisionadas.[11]&quot;) + &#13;
+last(&quot;TotalOntsProvisionadas.[12]&quot;) + &#13;
+last(&quot;TotalOntsProvisionadas.[13]&quot;) + &#13;
+last(&quot;TotalOntsProvisionadas.[14]&quot;) +&#13;
+last(&quot;TotalOntsProvisionadas.[15]&quot;) + &#13;
+last(&quot;TotalOntsProvisionadas.[16]&quot;)</params>
+                    <applications>
+                        <application>
+                            <name>TotalOntsProvisionadasPorOlt</name>
+                        </application>
+                    </applications>
+                </item>
+            </items>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>Interface</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#INTERFACE},1.3.6.1.4.1.37950.1.1.5.10.1.1.1.1.2]</snmp_oid>
+                    <key>Interface.disconery</key>
+                    <delay>30m</delay>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>{#INTERFACE}DownPortaUplink</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.37950.1.1.5.10.1.1.2.1.36.{#SNMPINDEX}</snmp_oid>
+                            <key>DownPortaUplink.[{#SNMPINDEX}]</key>
+                            <applications>
+                                <application>
+                                    <name>InterfacesUplink</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#INTERFACE}ErrosDownPortaUplink</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.37950.1.1.5.10.1.1.2.1.11.{#SNMPINDEX}</snmp_oid>
+                            <key>ErrosDownPortaUplink.[{#SNMPINDEX}]</key>
+                            <applications>
+                                <application>
+                                    <name>InterfacesUplink</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#INTERFACE}ErrosUpPortaUplink</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.37950.1.1.5.10.1.1.2.1.22.{#SNMPINDEX}</snmp_oid>
+                            <key>ErrosUpPortaUplink.[{#SNMPINDEX}]</key>
+                            <delay>5m</delay>
+                            <applications>
+                                <application>
+                                    <name>InterfacesUplink</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#INTERFACE}StatusUplinkPort</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.37950.1.1.5.10.1.1.3.1.2.{#SNMPINDEX}</snmp_oid>
+                            <key>StatusUplinkPort.[{#SNMPINDEX}]</key>
+                            <delay>5m</delay>
+                            <applications>
+                                <application>
+                                    <name>InterfacesUplink</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>NomePon</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#NOMEPON},1.3.6.1.4.1.37950.1.1.5.10.1.2.1.1.2]</snmp_oid>
+                    <key>NomePon.disconery</key>
+                    <delay>30m</delay>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>{#NOMEPON}PotenciaPortaPon</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.37950.1.1.5.10.13.1.1.5.{#SNMPINDEX}</snmp_oid>
+                            <key>PotenciaPortaPon.[{#SNMPINDEX}]</key>
+                            <delay>60m</delay>
+                            <value_type>FLOAT</value_type>
+                            <units>dBm</units>
+                            <applications>
+                                <application>
+                                    <name>ColetaDeInformaçõesdaPON</name>
+                                </application>
+                            </applications>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{last()}&lt;=2</expression>
+                                    <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                                    <recovery_expression>{last()}&lt;=3</recovery_expression>
+                                    <name>PORTA  {#NOMEPON} DA OLT {#SNMPINDEX}  ESTA COM NIVEL DE TX &lt;= 2 dBm.</name>
+                                    <priority>WARNING</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NOMEPON}StatusPortaPon</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.37950.1.1.5.10.1.2.3.1.2.{#SNMPINDEX}</snmp_oid>
+                            <key>StatusPortaPon.[{#SNMPINDEX}]</key>
+                            <delay>30s</delay>
+                            <applications>
+                                <application>
+                                    <name>ColetaDeInformaçõesdaPON</name>
+                                </application>
+                            </applications>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{last()}=0</expression>
+                                    <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                                    <recovery_expression>{last()}=1</recovery_expression>
+                                    <name>PORTA  {#NOMEPON} DA OLT {#SNMPINDEX}  ESTA OFFLINE</name>
+                                    <priority>HIGH</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NOMEPON}TemperaturaDogbicdaPortaPon</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.37950.1.1.5.10.13.1.1.2.{#SNMPINDEX}</snmp_oid>
+                            <key>TemperaturaDoGbicdaPortaPon.[{#SNMPINDEX}]</key>
+                            <delay>30m</delay>
+                            <value_type>FLOAT</value_type>
+                            <units>°C</units>
+                            <applications>
+                                <application>
+                                    <name>ColetaDeInformaçõesdaPON</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NOMEPON}TotalOntsOnline</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.37950.1.1.6.1.1.18.1.3.{#SNMPINDEX}</snmp_oid>
+                            <key>TotalOntsOnline.[{#SNMPINDEX}]</key>
+                            <applications>
+                                <application>
+                                    <name>ColetaDeInformaçõesdaPON</name>
+                                </application>
+                            </applications>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{abschange()}&gt;=16</expression>
+                                    <name>Houve uma desconexão na rede {#NOMEPON}, provavel rompimento ou queda de energia.</name>
+                                    <opdata>Houve uma desconexão na rede {#NOMEPON}, provavel rompimento ou queda de energia.</opdata>
+                                    <priority>HIGH</priority>
+                                    <description>Há indicios de Ropimento ou queda de Energica elétrica, favor aguardar confirmação</description>
+                                    <manual_close>YES</manual_close>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NOMEPON}TotalOntsProvisionadas</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.37950.1.1.6.1.1.18.1.2.{#SNMPINDEX}</snmp_oid>
+                            <key>TotalOntsProvisionadas.[{#SNMPINDEX}]</key>
+                            <delay>10m</delay>
+                            <applications>
+                                <application>
+                                    <name>ColetaDeInformaçõesdaPON</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>OntsPon</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery.[{#ONTSPON},1.3.6.1.4.1.37950.1.1.6.1.1.2.1.5]</snmp_oid>
+                    <key>OntsPon</key>
+                    <delay>30m</delay>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>{#ONTSPON}.RXOnt</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.37950.1.1.6.1.1.3.1.7.{#SNMPINDEX}</snmp_oid>
+                            <key>RXOnt.[{#SNMPINDEX}]</key>
+                            <delay>15m</delay>
+                            <value_type>FLOAT</value_type>
+                            <units>dBm</units>
+                            <applications>
+                                <application>
+                                    <name>ColetaDeInformaçõesdaONT</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>RTRIM</type>
+                                    <params>(dBm)</params>
+                                </step>
+                            </preprocessing>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{last()}&lt;=-27</expression>
+                                    <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                                    <recovery_expression>{last()}&lt;=-25</recovery_expression>
+                                    <name>ClLIENTE COM ONU {#ONTSPON} SINAL RX BAIXO MENOR DOQUE -27(dBm) {#SNMPVALUE}</name>
+                                    <priority>INFO</priority>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#ONTSPON}.SerialOnt</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.37950.1.1.6.1.1.2.1.5.{#SNMPINDEX}</snmp_oid>
+                            <key>SerialOnt.[{#SNMPINDEX}]</key>
+                            <delay>15m</delay>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <applications>
+                                <application>
+                                    <name>ColetaDeInformaçõesdaONT</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>RX CLIENTES{#ONTSPON}</name>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>199C0D</color>
+                                    <item>
+                                        <host>Template Olt vsol 1600g Netcol luiz 16 PONS</host>
+                                        <key>RXOnt.[{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
+            </discovery_rules>
+        </template>
+    </templates>
+</zabbix_export>

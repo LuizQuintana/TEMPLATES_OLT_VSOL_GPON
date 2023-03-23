@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<zabbix_export>
+    <version>5.0</version>
+    <date>2022-10-28T12:28:30Z</date>
+    <groups>
+        <group>
+            <name>OLT</name>
+        </group>
+    </groups>
+    <templates>
+        <template>
+            <template>Template Olt vsol 1600g Netcol luiz 8 PONS</template>
+            <name>Template Olt vsol 1600g Netcol luiz 8 PONS</name>
+            <templates>
+                <template>
+                    <name>Template Net Mikrotik SNMPv2</name>
+                </template>
+            </templates>
+            <groups>
+                <group>
+                    <name>OLT</name>
+                </group>
+            </groups>
+            <applications>
+                <application>
+                    <name>ColetaDeInformaçõesdaONT</name>
+                </application>
+                <application>
+                    <name>ColetaDeInformaçõesdaPON</name>
+                </application>
+                <application>
+                    <name>TotalOntsOnlineISP</name>
+                </application>
+                <application>
+                    <name>TotalOntsOnlinePorOlt</name>
+                </application>
+                <application>
+                    <name>TotalOntsProvisionadasPorOlt</name>
+                </application>
+                <application>
+                    <name>TotalProvisionadaISP</name>
+                </application>
+            </applications>
+            <items>
+                <item>
+                    <name>TotalOntsOnline</name>
+                    <type>CALCULATED</type>
+                    <key>TotalOntsOnline</key>
+                    <delay>5m</delay>
+                    <params>last(&quot;TotalOntsOnline.[1]&quot;) + last(&quot;TotalOntsOnline.[2]&quot;) + &#13;
+last(&quot;TotalOntsOnline.[3]&quot;) + last(&quot;TotalOntsOnline.[4]&quot;) + &#13;
+last(&quot;TotalOntsOnline.[5]&quot;) + last(&quot;TotalOntsOnline.[6]&quot;) + &#13;
+last(&quot;TotalOntsOnline.[7]&quot;) + last(&quot;TotalOntsOnline.[8]&quot;)</params>
+                    <applications>
+                        <application>
+                            <name>TotalOntsOnlinePorOlt</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>TotalOntsOnlineISP</name>
+                    <type>CALCULATED</type>
+                    <key>TotalOntsOnlineISP</key>
+                    <params>last(&quot;OLT01COLOMBO:TotalOntsOnline&quot;) + last(&quot;OLT01GUARAITUBA:TotalOntsOnline&quot;) + last(&quot;OLT01PIRAQUARA:TotalOntsOnline&quot;) + last(&quot;OLT01QUATROBARRAS:TotalOntsOnline&quot;) + last(&quot;OLT02COLOMBO:TotalOntsOnline&quot;) + last(&quot;OLT02GUARAITUBA:TotalOntsOnline&quot;) + last(&quot;OLT02PIRAQUARA:TotalOntsOnline&quot;) + last(&quot;OLT02QUATROBARRAS:TotalOntsOnline&quot;) + last(&quot;OLT03COLOMBO:TotalOntsOnline&quot;) + last(&quot;OLT03GUARAITUBA:TotalOntsOnline&quot;) + last(&quot;OLT03PIRAQUARA:TotalOntsOnline&quot;) + last(&quot;OLT03QUATROBARRAS:TotalOntsOnline&quot;) + last(&quot;OLT04COLOMBO:TotalOntsOnline&quot;) + last(&quot;OLT04GUARAITUBA:TotalOntsOnline&quot;) + last(&quot;OLT04PIRAQUARA:TotalOntsOnline&quot;) + last(&quot;OLT04QUATROBARRAS:TotalOntsOnline&quot;) + last(&quot;OLT05COLOMBO:TotalOntsOnline&quot;) + last(&quot;OLT05GUARAITUBA:TotalOntsOnline&quot;) + last(&quot;OLT05PIRAQUARA:TotalOntsOnline&quot;) + last(&quot;OLT06COLOMBO16P:TotalOntsOnline&quot;) + last(&quot;OLT06GUARAITUBA:TotalOntsOnline&quot;) + last(&quot;OLT06PIRAQUARA:TotalOntsOnline&quot;) + last(&quot;OLT07COLOMBO:TotalOntsOnline&quot;) + last(&quot;OLT07GUARAITUBA:TotalOntsOnline&quot;) + last(&quot;OLT08_MARACANA_16PORTAS:TotalOntsOnline&quot;) + last(&quot;OLT09GUARAITUBA-SANTATEREZINHA:TotalOntsOnline&quot;) + last(&quot;OLT10CENTRO_COLOMBO:TotalOntsOnline&quot;)</params>
+                    <applications>
+                        <application>
+                            <name>TotalOntsOnlineISP</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>TotalOntsProvisionadaPorOlt</name>
+                    <type>CALCULATED</type>
+                    <key>TotalOntsProvisionadaPorOlt</key>
+                    <delay>10m</delay>
+                    <params>last(&quot;TotalOntsProvisionadas.[1]&quot;) + last(&quot;TotalOntsProvisionadas.[2]&quot;) + &#13;
+last(&quot;TotalOntsProvisionadas.[3]&quot;) + &#13;
+last(&quot;TotalOntsProvisionadas.[4]&quot;) + &#13;
+last(&quot;TotalOntsProvisionadas.[5]&quot;) + &#13;
+last(&quot;TotalOntsProvisionadas.[6]&quot;) + &#13;
+last(&quot;TotalOntsProvisionadas.[7]&quot;) +&#13;
+last(&quot;TotalOntsProvisionadas.[8]&quot;)</params>
+                    <applications>
+                        <application>
+                            <name>TotalOntsProvisionadasPorOlt</name>
+                        </application>
+                    </applications>
+                </item>
+                <item>
+                    <name>TotalProvisionadaISP</name>
+                    <type>CALCULATED</type>
+                    <key>TotalProvisionadaISP</key>
+                    <params>last(&quot;OLT01COLOMBO:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT01GUARAITUBA:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT01PIRAQUARA:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT01QUATROBARRAS:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT02COLOMBO:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT02GUARAITUBA:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT02PIRAQUARA:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT02QUATROBARRAS:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT03COLOMBO:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT03GUARAITUBA:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT03PIRAQUARA:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT03QUATROBARRAS:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT04COLOMBO:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT04GUARAITUBA:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT04PIRAQUARA:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT04QUATROBARRAS:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT05COLOMBO:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT05GUARAITUBA:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT05PIRAQUARA:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT06COLOMBO16P:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT06GUARAITUBA:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT06PIRAQUARA:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT07COLOMBO:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT07GUARAITUBA:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT08_MARACANA_16PORTAS:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT09GUARAITUBA-SANTATEREZINHA:TotalOntsProvisionadaPorOlt&quot;) + last(&quot;OLT10CENTRO_COLOMBO:TotalOntsProvisionadaPorOlt&quot;)</params>
+                    <applications>
+                        <application>
+                            <name>TotalProvisionadaISP</name>
+                        </application>
+                    </applications>
+                </item>
+            </items>
+            <discovery_rules>
+                <discovery_rule>
+                    <name>NomePon</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery[{#NOMEPON},1.3.6.1.4.1.37950.1.1.5.10.1.2.1.1.2]</snmp_oid>
+                    <key>NomePon.disconery</key>
+                    <delay>30m</delay>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>{#NOMEPON}PotenciaPortaPon</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.37950.1.1.5.10.13.1.1.5.{#SNMPINDEX}</snmp_oid>
+                            <key>PotenciaPortaPon.[{#SNMPINDEX}]</key>
+                            <delay>60m</delay>
+                            <value_type>FLOAT</value_type>
+                            <units>dBm</units>
+                            <applications>
+                                <application>
+                                    <name>ColetaDeInformaçõesdaPON</name>
+                                </application>
+                            </applications>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{last()}&lt;=2</expression>
+                                    <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                                    <recovery_expression>{last()}&lt;=3</recovery_expression>
+                                    <name>PORTA  {#NOMEPON} DA OLT {#SNMPINDEX}  ESTA COM NIVEL DE TX &lt;= 2 dBm.</name>
+                                    <priority>WARNING</priority>
+                                    <manual_close>YES</manual_close>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NOMEPON}StatusPortaPon</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.37950.1.1.5.10.1.2.3.1.2.{#SNMPINDEX}</snmp_oid>
+                            <key>StatusPortaPon.[{#SNMPINDEX}]</key>
+                            <delay>30s</delay>
+                            <applications>
+                                <application>
+                                    <name>ColetaDeInformaçõesdaPON</name>
+                                </application>
+                            </applications>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{last()}=0</expression>
+                                    <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                                    <recovery_expression>{last()}=1</recovery_expression>
+                                    <name>PORTA  {#NOMEPON} DA OLT ESTA OFFLINE</name>
+                                    <priority>HIGH</priority>
+                                    <manual_close>YES</manual_close>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NOMEPON}TemperaturaDogbicdaPortaPon</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.37950.1.1.5.10.13.1.1.2.{#SNMPINDEX}</snmp_oid>
+                            <key>TemperaturaDoGbicdaPortaPon.[{#SNMPINDEX}]</key>
+                            <delay>30m</delay>
+                            <value_type>FLOAT</value_type>
+                            <units>°C</units>
+                            <applications>
+                                <application>
+                                    <name>ColetaDeInformaçõesdaPON</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NOMEPON}TotalOntsOnline</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.37950.1.1.6.1.1.18.1.3.{#SNMPINDEX}</snmp_oid>
+                            <key>TotalOntsOnline.[{#SNMPINDEX}]</key>
+                            <applications>
+                                <application>
+                                    <name>ColetaDeInformaçõesdaPON</name>
+                                </application>
+                            </applications>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{abschange()}&gt;=16</expression>
+                                    <name>Houve uma desconexão na rede {#NOMEPON}, provavel rompimento ou queda de energia.</name>
+                                    <opdata>Houve uma desconexão na rede {#NOMEPON}, provavel rompimento ou queda de energia.</opdata>
+                                    <priority>HIGH</priority>
+                                    <description>Há indicios de Ropimento ou queda de Energica elétrica, favor aguardar confirmação</description>
+                                    <manual_close>YES</manual_close>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#NOMEPON}TotalOntsProvisionadas</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.37950.1.1.6.1.1.18.1.2.{#SNMPINDEX}</snmp_oid>
+                            <key>TotalOntsProvisionadas.[{#SNMPINDEX}]</key>
+                            <delay>10m</delay>
+                            <applications>
+                                <application>
+                                    <name>ColetaDeInformaçõesdaPON</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                    </item_prototypes>
+                </discovery_rule>
+                <discovery_rule>
+                    <name>OntsPon</name>
+                    <type>SNMP_AGENT</type>
+                    <snmp_oid>discovery.[{#ONTSPON},1.3.6.1.4.1.37950.1.1.6.1.1.2.1.5]</snmp_oid>
+                    <key>OntsPon</key>
+                    <delay>30m</delay>
+                    <item_prototypes>
+                        <item_prototype>
+                            <name>{#ONTSPON}.RXOnt</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.37950.1.1.6.1.1.3.1.7.{#SNMPINDEX}</snmp_oid>
+                            <key>RXOnt.[{#SNMPINDEX}]</key>
+                            <delay>15m</delay>
+                            <value_type>FLOAT</value_type>
+                            <units>dBm</units>
+                            <applications>
+                                <application>
+                                    <name>ColetaDeInformaçõesdaONT</name>
+                                </application>
+                            </applications>
+                            <preprocessing>
+                                <step>
+                                    <type>RTRIM</type>
+                                    <params>(dBm)</params>
+                                </step>
+                            </preprocessing>
+                            <trigger_prototypes>
+                                <trigger_prototype>
+                                    <expression>{last()}&lt;=-27</expression>
+                                    <recovery_mode>RECOVERY_EXPRESSION</recovery_mode>
+                                    <recovery_expression>{last()}&lt;=-25</recovery_expression>
+                                    <name>CLIENTE COM ONU {#ONTSPON} SINAL RX BAIXO MENOR DOQUE -27(dBm) {#RXOnt}</name>
+                                    <priority>INFO</priority>
+                                    <description>CLIENTE COM ONU GPON009E1789 SINAL RX BAIXO MENOR DOQUE -27(dBm) 8.2</description>
+                                    <manual_close>YES</manual_close>
+                                </trigger_prototype>
+                            </trigger_prototypes>
+                        </item_prototype>
+                        <item_prototype>
+                            <name>{#ONTSPON}.SerialOnt</name>
+                            <type>SNMP_AGENT</type>
+                            <snmp_oid>1.3.6.1.4.1.37950.1.1.6.1.1.2.1.5.{#SNMPINDEX}</snmp_oid>
+                            <key>SerialOnt.[{#SNMPINDEX}]</key>
+                            <delay>15m</delay>
+                            <trends>0</trends>
+                            <value_type>TEXT</value_type>
+                            <applications>
+                                <application>
+                                    <name>ColetaDeInformaçõesdaONT</name>
+                                </application>
+                            </applications>
+                        </item_prototype>
+                    </item_prototypes>
+                    <graph_prototypes>
+                        <graph_prototype>
+                            <name>RX CLIENTES{#ONTSPON}</name>
+                            <graph_items>
+                                <graph_item>
+                                    <sortorder>1</sortorder>
+                                    <color>199C0D</color>
+                                    <item>
+                                        <host>Template Olt vsol 1600g Netcol luiz 8 PONS</host>
+                                        <key>RXOnt.[{#SNMPINDEX}]</key>
+                                    </item>
+                                </graph_item>
+                            </graph_items>
+                        </graph_prototype>
+                    </graph_prototypes>
+                </discovery_rule>
+            </discovery_rules>
+        </template>
+    </templates>
+</zabbix_export>
